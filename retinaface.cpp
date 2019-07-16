@@ -362,7 +362,7 @@ private:
 		return result;
 	}
 
-	//true ´Ó´óµ½Ğ¡ »ñÈ¡´Ó´óµ½Ğ¡Ë³ĞòµÄË÷Òı
+	//true ä»å¤§åˆ°å° è·å–ä»å¤§åˆ°å°é¡ºåºçš„ç´¢å¼•
 	//v={100,300,200} false->return {0,2,1}  true->return {1,2,0}
 	template <typename T>
 	vector<size_t> sort_indexes_e(vector<T> &v, bool reverse = false)
@@ -425,7 +425,7 @@ private:
 
 	vector<size_t> nms(vector<vector<mx_float>> proposals_list, vector<mx_float> scores_list, mx_float thresh)
 	{
-		//¼õÉÙ×°²ğÏä
+		//å‡å°‘è£…æ‹†ç®±
 		/*vector<mx_float> x1s;
 		vector<mx_float> y1s;
 		vector<mx_float> x2s;
@@ -738,7 +738,7 @@ public:
 							}
 						}
 					}
-					//¡Ì
+					//âˆš
 					vector<vector<mx_float>> proposals = bbox_pred_and_clip_boxes(anchors, bbox_deltas, temp.cols, temp.rows);
 				
 					vector<mx_float> scores;
@@ -913,7 +913,7 @@ public:
 int main(int argc,char* args[])
 {
 	RetinaFace m_facedetector(true);
-	m_facedetector.Loadmodel("E:/PyCode/insightface/models", "mnet.25");
+	m_facedetector.Loadmodel("models", "mnet.25");
 	Mat src;
 	VideoCapture *video = new VideoCapture(0);
 	mx_float scale = 1.0;
