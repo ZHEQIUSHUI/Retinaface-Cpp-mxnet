@@ -14,3 +14,15 @@
 
 RetinaFace-MobileNet0.25 ([baidu cloud](https://pan.baidu.com/s/1P1ypO7VYUbNAezdvLm2m9w)).
 WiderFace validation mAP: Hard 82.5. (model size: 1.68Mb)
+
+
+
+## Reference
+
+opencv cpp lib
+
+mxnet cpp lib
+
+cuda 10.0
+
+cudnn 7.5
