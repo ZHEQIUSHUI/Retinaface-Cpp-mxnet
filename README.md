@@ -4,6 +4,10 @@
 
 debug flip result
 
+reduce packing and unboxing matrix times and time
+
+No “vote” for the time being,i think it is not often to used,so i have no debug it,maybe.....Coming soon
+
 
 ## Model from deepinsight/insightface/RetinaFace
 
