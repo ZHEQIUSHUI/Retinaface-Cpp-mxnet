@@ -1,6 +1,11 @@
 # Retinaface-Cpp-mxnet
 
-#model from deepinsight/insightface/RetinaFace
+## Update
+
+debug flip result
+
+
+## Model from deepinsight/insightface/RetinaFace
 
 [deepinsight](https://github.com/deepinsight/insightface/tree/master/RetinaFace):
 
