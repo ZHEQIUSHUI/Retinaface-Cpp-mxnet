@@ -2,7 +2,9 @@
 
 ## Update
 
-debug flip result
+debug:flip result
+
+debug:when use_lankmarks=false,output extract idx is wrong. 
 
 reduce packing and unboxing matrix times and time
 
