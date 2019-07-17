@@ -362,7 +362,7 @@ private:
 		return result;
 	}
 
-	//true ä»å¤§åˆ°å° è·å–ä»å¤§åˆ°å°é¡ºåºçš„ç´¢å¼•
+	//true ´Ó´óµ½Ğ¡ »ñÈ¡´Ó´óµ½Ğ¡Ë³ĞòµÄË÷Òı
 	//v={100,300,200} false->return {0,2,1}  true->return {1,2,0}
 	template <typename T>
 	vector<size_t> sort_indexes_e(vector<T> &v, bool reverse = false)
@@ -425,7 +425,7 @@ private:
 
 	vector<size_t> nms(vector<vector<mx_float>> proposals_list, vector<mx_float> scores_list, mx_float thresh)
 	{
-		//å‡å°‘è£…æ‹†ç®±
+		//¼õÉÙ×°²ğÏä
 		/*vector<mx_float> x1s;
 		vector<mx_float> y1s;
 		vector<mx_float> x2s;
@@ -738,7 +738,7 @@ public:
 							}
 						}
 					}
-					//âˆš
+					//¡Ì
 					vector<vector<mx_float>> proposals = bbox_pred_and_clip_boxes(anchors, bbox_deltas, temp.cols, temp.rows);
 				
 					vector<mx_float> scores;
@@ -774,10 +774,13 @@ public:
 					{
 						for (size_t f = 0; f < proposals.size(); f++)
 						{
-							proposals[f][0] = temp.cols - proposals[f][2] - 1;
-							proposals[f][2] = temp.cols - proposals[f][0] - 1;
+							mx_float oldx0 = proposals[f][0];
+							mx_float oldx2 = proposals[f][2];
+							proposals[f][0] = temp.cols - oldx2 - 1;
+							proposals[f][2] = temp.cols - oldx0 - 1;
 						}
 					}
+
 					if (scale != 1.0f)
 					{
 						for (size_t f = 0; f < proposals.size(); f++)
@@ -789,7 +792,7 @@ public:
 							proposals[f][3] /= scale;
 						}
 					}
-					
+
 					scores_list.insert(scores_list.end(), scores.begin(), scores.end());
 					proposals_list.insert(proposals_list.end(), proposals.begin(), proposals.end());
 					//OK
@@ -842,14 +845,19 @@ public:
 								landmarks[l][4] = p3;
 							}
 						}
-						for (size_t l = 0; l < landmarks.size(); l++)
+
+						if (scale != 1.0)
 						{
-							for (size_t k = 0; k < 5; k++)
+							for (size_t l = 0; l < landmarks.size(); l++)
 							{
-								landmarks[l][k].x /= scale;
-								landmarks[l][k].y /= scale;
+								for (size_t k = 0; k < 5; k++)
+								{
+									landmarks[l][k].x /= scale;
+									landmarks[l][k].y /= scale;
+								}
 							}
 						}
+						
 						landmarks_list.insert(landmarks_list.end(), landmarks.begin(), landmarks.end());
 					}
 				}
@@ -913,7 +921,7 @@ public:
 int main(int argc,char* args[])
 {
 	RetinaFace m_facedetector(true);
-	m_facedetector.Loadmodel("models", "mnet.25");
+	m_facedetector.Loadmodel("E:/PyCode/insightface/models", "mnet.25");
 	Mat src;
 	VideoCapture *video = new VideoCapture(0);
 	mx_float scale = 1.0;
@@ -934,7 +942,7 @@ int main(int argc,char* args[])
 	}
 	else
 	{
-		scale = 0.3;
+		scale = 1.0;
 	}
 	time_t start, end;
 	start = clock();
@@ -985,5 +993,6 @@ int main(int argc,char* args[])
 	video->release();
 	delete video;
 	video = nullptr;
+	waitKey(0);
 	return 0;
 }
