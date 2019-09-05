@@ -122,9 +122,7 @@ int main(int argc, char* args[])
 		time_t start, end;
 
 		double fcount = 0;
-		MultiTrack vtracker;
 
-		//FaceUtil::Init("E:\\Code\\opencv_pos\\x64\\Release\\shape_predictor_68_face_landmarks.dat");
 		while (true)
 		{
 			*video >> src;
