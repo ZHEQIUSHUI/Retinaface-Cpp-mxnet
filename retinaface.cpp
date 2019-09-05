@@ -362,7 +362,7 @@ private:
 		return result;
 	}
 
-	//true ´Ó´óµ½Ğ¡ »ñÈ¡´Ó´óµ½Ğ¡Ë³ĞòµÄË÷Òı
+	//true ä»å¤§åˆ°å° è·å–ä»å¤§åˆ°å°é¡ºåºçš„ç´¢å¼•
 	//v={100,300,200} false->return {0,2,1}  true->return {1,2,0}
 	template <typename T>
 	vector<size_t> sort_indexes_e(vector<T> &v, bool reverse = false)
@@ -425,7 +425,7 @@ private:
 
 	vector<size_t> nms(vector<vector<mx_float>> proposals_list, vector<mx_float> scores_list, mx_float thresh)
 	{
-		//¼õÉÙ×°²ğÏä
+		//å‡å°‘è£…æ‹†ç®±
 		/*vector<mx_float> x1s;
 		vector<mx_float> y1s;
 		vector<mx_float> x2s;
@@ -738,7 +738,7 @@ public:
 							}
 						}
 					}
-					//¡Ì
+					//âˆš
 					vector<vector<mx_float>> proposals = bbox_pred_and_clip_boxes(anchors, bbox_deltas, temp.cols, temp.rows);
 				
 					vector<mx_float> scores;
@@ -915,84 +915,3 @@ public:
 	}
 };
 
-
-
-
-int main(int argc,char* args[])
-{
-	RetinaFace m_facedetector(true);
-	m_facedetector.Loadmodel("E:/PyCode/insightface/models", "mnet.25");
-	Mat src;
-	VideoCapture *video = new VideoCapture(0);
-	mx_float scale = 1.0;
-	if (argc == 3)
-	{
-		video->release();
-		delete video;
-		video = nullptr;
-		video = new VideoCapture(args[1]);
-		scale = atof(args[2]);
-	}
-	else if (argc == 2)
-	{
-		video->release();
-		delete video;
-		video = nullptr;
-		video = new VideoCapture(args[1]);
-	}
-	else
-	{
-		scale = 1.0;
-	}
-	time_t start, end;
-	start = clock();
-	double fps = 0;
-	while (true)
-	{
-		*video >> src;
-		if (!src.data)
-		{
-			break;
-		}
-
-		vector<Face> faces = m_facedetector.detect(src, 0.5, vector<mx_float> {scale});
-		end = clock();
-		double times = double(end - start) / 1000.0;
-		fps++;
-		cout << "find " << faces.size() << " faces fps " << fps / times << endl;
-		for (size_t i = 0; i < faces.size(); i++)
-		{
-			rectangle(src, faces[i].boundingbox, Scalar(0, 0, 255), 2);
-			putText(src, to_string(faces[i].score), Point(faces[i].boundingbox.x, faces[i].boundingbox.y), CV_FONT_HERSHEY_COMPLEX, 0.5, Scalar(255, 0, 0), 1);
-			for (size_t j = 0; j < faces[i].landmarks.size(); j++)
-			{
-				circle(src, faces[i].landmarks[j], 1, Scalar(255, 0, 0), 2);
-			}
-		}
-		imshow("", src);
-		if (waitKey(1) == 27)
-		{
-			break;
-		}
-	}
-	//m_facedetector.use_landmarks = false;
-	//imshow("src", src);
-	//vector<mx_float> scales = { 640, 480 };
-	//float target_size = scales[0];
-	//float max_size = scales[1];
-	//int im_size_min = min(src.rows, src.cols);
-	//int im_size_max = max(src.rows, src.cols);
-	//float im_scale = float(target_size) / float(im_size_min);
-	//if (round(im_scale * im_size_max) > max_size)
-	//{
-	//	im_scale = float(max_size) / float(im_size_max);
-	//}
-	//
-	//dlog("image scale " + to_string(im_scale));
-	//imshow("",src);
-	video->release();
-	delete video;
-	video = nullptr;
-	waitKey(0);
-	return 0;
-}
