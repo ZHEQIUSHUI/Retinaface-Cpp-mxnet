@@ -34,7 +34,7 @@ int main(int argc, char* args[])
 	string path="your_image.jpg";
 	cout << "image_path :" << path << endl;
 	Mat src = imread(path);
-	mx_float score = 0.8;  //socre threshold
+	mx_float score = 0.8;  //score threshold
 	mx_float scale = 1.0;  //image tensor scale,smaller and faster,and lower accuracy
 	vector<Face> faces = m_facedetector.detect(src, score, vector<mx_float> {scale});
 	cout << "find " << faces.size() << " faces" << endl;
