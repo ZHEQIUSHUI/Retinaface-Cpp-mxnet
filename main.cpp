@@ -31,18 +31,14 @@ int main(int argc, char* args[])
 	bool use_gpu=false;
 	RetinaFace m_facedetector(use_gpu);
 	m_facedetector.Loadmodel("models", "mnet.25");
-	string path="/1.jpg";
+	string path="your_image.jpg";
 	cout << "image_path :" << path << endl;
-	src = imread(path);
+	Mat src = imread(path);
+	mx_float score = 0.8;  //socre threshold
+	mx_float scale = 1.0;  //image tensor scale,smaller and faster,and lower accuracy
 	vector<Face> faces = m_facedetector.detect(src, score, vector<mx_float> {scale});
 	cout << "find " << faces.size() << " faces" << endl;
-
 	Draw(src, faces, use_lankmarks);
-	if (width_disp&&height_disp)
-	{
-		resize(src, src, Size(width_disp, height_disp));
-	}
 	imshow(path, src);
-	
 	waitKey(0);
 }
