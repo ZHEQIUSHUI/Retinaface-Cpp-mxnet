@@ -1,5 +1,8 @@
 # Retinaface-Cpp-mxnet
 
+## Update 2019.9.9
+Fixed bugs with demo.the demo is write in github file edit...so you know...
+
 ## Update 2019.8.28
 Upload Example....i forgot it at first...
 
