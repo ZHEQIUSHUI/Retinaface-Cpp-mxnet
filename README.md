@@ -21,11 +21,14 @@ No “vote” for the time being,i think it is not often to used,so i have no de
 
 [deepinsight](https://github.com/deepinsight/insightface/tree/master/RetinaFace):
 
- ImageNet ResNet50 ([baidu cloud](https://pan.baidu.com/s/1WAkU9ZA_j-OmzO-sdk9whA) and [dropbox](https://www.dropbox.com/s/48b850vmnaaasfl/imagenet-resnet-50.zip?dl=0)). 
+Pretrained Model: RetinaFace-R50 ([baidu cloud](https://pan.baidu.com/s/1C6nKq122gJxRhb37vK0_LQ) or [dropbox](https://www.dropbox.com/s/53ftnlarhyrpkg2/retinaface-R50.zip?dl=0)) is a medium size model with ResNet50 backbone.
+It can output face bounding boxes and five facial landmarks in a single forward pass.
 
- ImageNet ResNet152 ([baidu cloud](https://pan.baidu.com/s/1nzQ6CzmdKFzg8bM8ChZFQg) and [dropbox](https://www.dropbox.com/s/8ypcra4nqvm32v6/imagenet-resnet-152.zip?dl=0)).
- 
- ## Third-party Models
+WiderFace validation mAP: Easy 96.5, Medium 95.6, Hard 90.4. 
+
+To avoid the confliction with the WiderFace Challenge (ICCV 2019), we postpone the release time of our best model.
+
+## Third-party Models
 
 [yangfly](https://github.com/yangfly): 
 
