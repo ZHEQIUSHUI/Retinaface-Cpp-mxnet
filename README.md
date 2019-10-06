@@ -1,5 +1,8 @@
 # Retinaface-Cpp-mxnet
 
+## Update 2019.10.6
+[Faster-Retinaface-Cpp-mxnet](https://github.com/ZHEQIUSHUI/Faster-RetinaFace-Cpp-mxnet):faster and lighter
+
 ## Update 2019.9.9
 Fixed bugs with demo.the demo is write in github file edit...so you know...
 
